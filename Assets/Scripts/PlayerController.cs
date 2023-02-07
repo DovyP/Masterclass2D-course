@@ -13,9 +13,13 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movementInput;
 
+    private Animator playerAnimator;
+
     void Start()
     {
         mainCamera = Camera.main;
+
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -38,7 +42,7 @@ public class PlayerController : MonoBehaviour
         weaponsArm.rotation = Quaternion.Euler(0, 0, angle);
 
         //flip player and weapon sprites depending on the mouse position
-        if(mousePosition.x < screenPoint.x)
+        if (mousePosition.x < screenPoint.x)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
             weaponsArm.localScale = new Vector3(-1f, -1f, 1f);
@@ -47,6 +51,16 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = Vector3.one;
             weaponsArm.localScale = Vector3.one;
+        }
+
+        //animation for idling/running
+        if (movementInput != Vector2.zero)
+        {
+            playerAnimator.SetBool("isRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("isRunning", false);
         }
     }
 }

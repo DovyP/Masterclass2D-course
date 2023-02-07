@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
         //movement
         //transform.position += new Vector3(movementInput.x, movementInput.y, 0f) * movementSpeed * Time.deltaTime;
+        movementInput.Normalize();
         playerRigidbody.velocity = movementInput * movementSpeed;
 
         //weapon rotation

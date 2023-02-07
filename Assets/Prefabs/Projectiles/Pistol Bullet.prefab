@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 5
+  projectileImpactWall: {fileID: 552664513910656338, guid: 7cbfd36ef19b31f4d838e4676bdde296, type: 3}
 --- !u!95 &3884482954853249004
 Animator:
   serializedVersion: 5

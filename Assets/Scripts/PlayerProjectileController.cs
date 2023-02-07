@@ -8,6 +8,8 @@ public class PlayerProjectileController : MonoBehaviour
 
     private Rigidbody2D projectileRigidbody;
 
+    [SerializeField] GameObject projectileImpactWall;
+
     void Start()
     {
         projectileRigidbody = GetComponent<Rigidbody2D>();
@@ -20,6 +22,7 @@ public class PlayerProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Instantiate(projectileImpactWall.transform, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
 
     private Animator playerAnimator;
 
+    [SerializeField] GameObject projectile;
+    [SerializeField] Transform firePoint;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -62,6 +65,12 @@ public class PlayerController : MonoBehaviour
         else
         {
             playerAnimator.SetBool("isRunning", false);
+        }
+
+        //shooting
+        if(Input.GetMouseButtonDown(0))
+        {
+            Instantiate(projectile, firePoint.position, firePoint.rotation);
         }
     }
 }

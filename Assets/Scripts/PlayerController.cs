@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] Transform firePoint;
 
+    [SerializeField] float timeBetweenShots;
+    private float shotCounter = 0f;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -71,6 +74,17 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Instantiate(projectile, firePoint.position, firePoint.rotation);
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            shotCounter -= Time.deltaTime;
+
+            if(shotCounter <= 0)
+            {
+                Instantiate(projectile, firePoint.position, firePoint.rotation);
+                shotCounter = timeBetweenShots;
+            }
         }
     }
 }

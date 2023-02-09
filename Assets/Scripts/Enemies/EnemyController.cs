@@ -16,11 +16,14 @@ public class EnemyController : MonoBehaviour
 
     private Transform playerToChase;
 
+    private Animator enemyAnimator;
+
 
     void Start()
     {
         enemyRigidbody = GetComponent<Rigidbody2D>();
         playerToChase = FindObjectOfType<PlayerController>().transform;
+        enemyAnimator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -41,6 +44,24 @@ public class EnemyController : MonoBehaviour
 
         directionToMoveIn.Normalize();
         enemyRigidbody.velocity = directionToMoveIn * enemySpeed;
+
+        if(directionToMoveIn != Vector3.zero)
+        {
+            enemyAnimator.SetBool("isWalking", true);
+        }
+        else
+        {
+            enemyAnimator.SetBool("isWalking", false);
+        }
+
+        if(playerToChase.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else
+        {
+            transform.localScale = Vector3.one;
+        }
     }
 
     private void OnDrawGizmosSelected()

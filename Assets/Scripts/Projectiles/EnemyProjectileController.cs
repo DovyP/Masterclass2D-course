@@ -14,6 +14,10 @@ public class EnemyProjectileController : MonoBehaviour
         player = FindObjectOfType<PlayerController>().transform;
         playerDirection = player.position - transform.position;
         playerDirection.Normalize();
+
+        //projectile rotation
+        float rot = Mathf.Atan2(-playerDirection.y, -playerDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rot + 180);
     }
 
     // Update is called once per frame

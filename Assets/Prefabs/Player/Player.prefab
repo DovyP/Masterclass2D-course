@@ -387,7 +387,8 @@ MonoBehaviour:
   movementSpeed: 5
   projectile: {fileID: 2919023297637838399, guid: cb1be6557295ae544a90b4d87d5dcb4f, type: 3}
   firePoint: {fileID: 8606543290495623309}
-  timeBetweenShots: 0.5
+  isWeaponAutomatic: 1
+  timeBetweenShots: 0.15
 --- !u!95 &2544324188580253202
 Animator:
   serializedVersion: 5

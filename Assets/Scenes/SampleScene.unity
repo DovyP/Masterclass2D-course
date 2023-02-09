@@ -155,10 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
-  enemyHealth: 20
+  enemyHealth: 100
   playerChaseRange: 2.69
   playerKeepChaseRange: 4.69
   deathSplatter: {fileID: 1751727933792532734, guid: a9715f99c6f2a2c40adf416ba4f26e12, type: 3}
+  damageEffect: {fileID: 5656640676330442883, guid: a36e9b9458795be4bbf3ea8168f6fa7a, type: 3}
 --- !u!50 &133722322
 Rigidbody2D:
   serializedVersion: 4
@@ -728,14 +729,6 @@ PrefabInstance:
     - target: {fileID: 2544324188580253206, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544324188580253207, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
-      propertyPath: timeBetweenShots
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544324188580253207, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
-      propertyPath: isWeaponAutomatic
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2544324188580253209, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
       propertyPath: m_Name

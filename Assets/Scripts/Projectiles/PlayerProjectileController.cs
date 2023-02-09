@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerProjectileController : MonoBehaviour
 {
     [SerializeField] GameObject projectileImpactWall;
+    [SerializeField] GameObject[] damageEffects;
+
     [SerializeField] float projectileSpeed = 5f;
 
     [SerializeField] int damageAmount = 10;
@@ -23,11 +25,16 @@ public class PlayerProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Instantiate(projectileImpactWall.transform, transform.position, transform.rotation);
-
         if (collision.CompareTag("Enemy"))
         {
+            int selectedSplatter = Random.Range(0, damageEffects.Length);
+
+            Instantiate(damageEffects[selectedSplatter], transform.position, transform.rotation);
             collision.GetComponent<EnemyController>().DamageEnemy(damageAmount);
+        }
+        else
+        {
+            Instantiate(projectileImpactWall.transform, transform.position, transform.rotation);
         }
 
         Destroy(gameObject);

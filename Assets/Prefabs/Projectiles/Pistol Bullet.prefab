@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -109171905
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 391140198, guid: 6a4987e91ef9c6d4f907c50017a7043e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -148,8 +148,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d302cedbfd7cd974fa28974e7c3fb38c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 5
   projectileImpactWall: {fileID: 552664513910656338, guid: 7cbfd36ef19b31f4d838e4676bdde296, type: 3}
+  damageEffects:
+  - {fileID: 5656640676330442883, guid: a36e9b9458795be4bbf3ea8168f6fa7a, type: 3}
+  - {fileID: 2614648980183606812, guid: 806e05b0251d39c4f95dc470421194df, type: 3}
+  - {fileID: 699195522925623149, guid: bd328d7ba6b646242839450430818612, type: 3}
+  - {fileID: 4958585404521911764, guid: 99c410c83d8f1d64cb64f09602f63d08, type: 3}
+  - {fileID: 240315942133342647, guid: 90a8f03a223147c4bb77928480faacd2, type: 3}
+  projectileSpeed: 5
+  damageAmount: 10
 --- !u!95 &3884482954853249004
 Animator:
   serializedVersion: 5
@@ -210,7 +217,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -109171905
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Time: 0.45
   m_Parameters:

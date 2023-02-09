@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour
     private Animator enemyAnimator;
 
     [SerializeField] GameObject deathSplatter;
+    [SerializeField] GameObject damageEffect;
 
 
     void Start()
@@ -71,6 +72,8 @@ public class EnemyController : MonoBehaviour
     public void DamageEnemy(int damageTaken)
     {
         enemyHealth -= damageTaken;
+
+        //Instantiate(damageEffect, transform.position, transform.rotation);
 
         if(enemyHealth <= 0)
         {

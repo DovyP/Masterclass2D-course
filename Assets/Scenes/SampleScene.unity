@@ -159,7 +159,7 @@ MonoBehaviour:
   playerChaseRange: 2.69
   playerKeepChaseRange: 4.69
   meleeAttacker: 0
-  enemyProjectile: {fileID: 2919023297637838399, guid: cb1be6557295ae544a90b4d87d5dcb4f, type: 3}
+  enemyProjectile: {fileID: 181991180843813089, guid: 21c0cf0c8e58ffc4bbd5726eb313814c, type: 3}
   firePosition: {fileID: 967164888}
   timeBetweenShots: 1
   deathSplatter: {fileID: 1751727933792532734, guid: a9715f99c6f2a2c40adf416ba4f26e12, type: 3}

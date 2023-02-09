@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4088408956058393760}
   - component: {fileID: 787009858006179481}
   - component: {fileID: 2649332061570399084}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slime Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

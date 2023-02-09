@@ -6,11 +6,13 @@ public class EnemyProjectileController : MonoBehaviour
 {
     [SerializeField] float projectileSpeed;
     private Vector3 playerDirection;
+    private Transform player;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerDirection = FindObjectOfType<PlayerController>().transform.position - transform.position;
+        player = FindObjectOfType<PlayerController>().transform;
+        playerDirection = player.position - transform.position;
         playerDirection.Normalize();
     }
 

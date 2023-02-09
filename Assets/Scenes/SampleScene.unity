@@ -156,8 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c97d70ff87149438ac88e2b5df60c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 3
-  playerChaseRange: 2
+  enemySpeed: 2
+  playerChaseRange: 2.69
+  playerKeepChaseRange: 0
 --- !u!50 &133722322
 Rigidbody2D:
   serializedVersion: 4
@@ -178,7 +179,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &133722323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133722320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.76, y: 0.48, z: 0}
+  m_LocalPosition: {x: 3.9, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -781,7 +782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2544324188580253207, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
       propertyPath: timeBetweenShots
-      value: 0.01
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2544324188580253207, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
       propertyPath: isWeaponAutomatic

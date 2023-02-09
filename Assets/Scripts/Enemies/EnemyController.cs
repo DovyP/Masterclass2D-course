@@ -8,12 +8,18 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D enemyRigidbody;
 
     [SerializeField] float playerChaseRange;
+    [SerializeField] float playerKeepChaseRange;
+
+    private bool isChasing;
+
     private Vector3 directionToMoveIn;
 
     private Transform playerToChase;
 
+
     void Start()
     {
+        enemyRigidbody = GetComponent<Rigidbody2D>();
         playerToChase = FindObjectOfType<PlayerController>().transform;
     }
 
@@ -21,17 +27,28 @@ public class EnemyController : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, playerToChase.position) < playerChaseRange)
         {
-            Debug.Log("Player is in chase range");
+            directionToMoveIn = playerToChase.position - transform.position;
+            isChasing = true;
+        }else if (isChasing && Vector3.Distance(transform.position, playerToChase.position) < playerKeepChaseRange)
+        {
+            directionToMoveIn = playerToChase.position - transform.position;
         }
         else
         {
-            Debug.Log("Player is out of chase range");
+            directionToMoveIn = Vector3.zero;
+            isChasing = false;
         }
+
+        directionToMoveIn.Normalize();
+        enemyRigidbody.velocity = directionToMoveIn * enemySpeed;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, playerChaseRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, playerKeepChaseRange);
     }
 }

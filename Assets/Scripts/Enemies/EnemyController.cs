@@ -20,6 +20,15 @@ public class EnemyController : MonoBehaviour
 
     private Animator enemyAnimator;
 
+    //attack
+    [SerializeField] bool meleeAttacker;
+
+    [SerializeField] GameObject enemyProjectile;
+    [SerializeField] Transform firePosition;
+
+    [SerializeField] float timeBetweenShots;
+    private bool readyToShoot;
+
     [SerializeField] GameObject deathSplatter;
     [SerializeField] GameObject damageEffect;
 
@@ -29,6 +38,8 @@ public class EnemyController : MonoBehaviour
         enemyRigidbody = GetComponent<Rigidbody2D>();
         playerToChase = FindObjectOfType<PlayerController>().transform;
         enemyAnimator = GetComponentInChildren<Animator>();
+
+        readyToShoot = true;
     }
 
     void Update()
@@ -67,6 +78,20 @@ public class EnemyController : MonoBehaviour
         {
             transform.localScale = Vector3.one;
         }
+
+        if (!meleeAttacker && readyToShoot)
+        {
+            readyToShoot = false;
+            StartCoroutine(FireEnemyProjectile());
+        }
+    }
+
+    IEnumerator FireEnemyProjectile()
+    {
+        yield return new WaitForSeconds(timeBetweenShots);
+
+        Instantiate(enemyProjectile, firePosition.position, firePosition.rotation);
+        readyToShoot = true;
     }
 
     public void DamageEnemy(int damageTaken)

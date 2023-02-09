@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour
 
     private Animator enemyAnimator;
 
+    [SerializeField] GameObject deathSplatter;
+
 
     void Start()
     {
@@ -72,6 +74,7 @@ public class EnemyController : MonoBehaviour
 
         if(enemyHealth <= 0)
         {
+            Instantiate(deathSplatter, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

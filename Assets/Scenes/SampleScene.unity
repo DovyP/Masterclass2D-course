@@ -155,9 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
-  enemyHealth: 100
+  enemyHealth: 20
   playerChaseRange: 2.69
   playerKeepChaseRange: 4.69
+  deathSplatter: {fileID: 1751727933792532734, guid: a9715f99c6f2a2c40adf416ba4f26e12, type: 3}
 --- !u!50 &133722322
 Rigidbody2D:
   serializedVersion: 4
@@ -292,8 +293,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -154143437
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4e240d0032612d7448e3405fc77af4a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

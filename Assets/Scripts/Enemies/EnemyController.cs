@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] float enemySpeed;
+    [SerializeField] int enemyHealth = 100;
+
     private Rigidbody2D enemyRigidbody;
 
     [SerializeField] float playerChaseRange;
@@ -61,6 +63,16 @@ public class EnemyController : MonoBehaviour
         else
         {
             transform.localScale = Vector3.one;
+        }
+    }
+
+    public void DamageEnemy(int damageTaken)
+    {
+        enemyHealth -= damageTaken;
+
+        if(enemyHealth <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 

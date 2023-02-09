@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerProjectileController : MonoBehaviour
 {
+    [SerializeField] GameObject projectileImpactWall;
     [SerializeField] float projectileSpeed = 5f;
 
-    private Rigidbody2D projectileRigidbody;
+    [SerializeField] int damageAmount = 10;
 
-    [SerializeField] GameObject projectileImpactWall;
+    private Rigidbody2D projectileRigidbody;
 
     void Start()
     {
@@ -23,6 +24,12 @@ public class PlayerProjectileController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Instantiate(projectileImpactWall.transform, transform.position, transform.rotation);
+
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<EnemyController>().DamageEnemy(damageAmount);
+        }
+
         Destroy(gameObject);
     }
 }

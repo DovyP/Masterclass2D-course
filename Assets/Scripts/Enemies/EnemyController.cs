@@ -25,9 +25,11 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] GameObject enemyProjectile;
     [SerializeField] Transform firePosition;
+    [SerializeField] float shootingRange;
 
     [SerializeField] float timeBetweenShots;
     private bool readyToShoot;
+
 
     [SerializeField] GameObject deathSplatter;
     [SerializeField] GameObject damageEffect;
@@ -79,7 +81,7 @@ public class EnemyController : MonoBehaviour
             transform.localScale = Vector3.one;
         }
 
-        if (!meleeAttacker && readyToShoot)
+        if(Vector3.Distance(transform.position, playerToChase.position) < shootingRange && !meleeAttacker && readyToShoot)
         {
             readyToShoot = false;
             StartCoroutine(FireEnemyProjectile());
@@ -114,5 +116,8 @@ public class EnemyController : MonoBehaviour
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, playerKeepChaseRange);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
 }

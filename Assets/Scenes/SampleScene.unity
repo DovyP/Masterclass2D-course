@@ -154,13 +154,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c97d70ff87149438ac88e2b5df60c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 2
-  enemyHealth: 1000
+  enemySpeed: 1.69
+  enemyHealth: 69
   playerChaseRange: 2.69
   playerKeepChaseRange: 4.69
   meleeAttacker: 0
   enemyProjectile: {fileID: 181991180843813089, guid: 21c0cf0c8e58ffc4bbd5726eb313814c, type: 3}
   firePosition: {fileID: 967164888}
+  shootingRange: 3.69
   timeBetweenShots: 1
   deathSplatter: {fileID: 1751727933792532734, guid: a9715f99c6f2a2c40adf416ba4f26e12, type: 3}
   damageEffect: {fileID: 5656640676330442883, guid: a36e9b9458795be4bbf3ea8168f6fa7a, type: 3}
@@ -441,7 +442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967164887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.11, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

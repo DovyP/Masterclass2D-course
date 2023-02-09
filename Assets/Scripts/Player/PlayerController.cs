@@ -31,15 +31,27 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // inputs
-        movementInput.x = Input.GetAxisRaw("Horizontal");
-        movementInput.y = Input.GetAxisRaw("Vertical");
+        PlayerMoving();
+        PointingGunAtMouse();
+        AnimatingThePlayer();
+        PlayerShooting();
+    }
 
-        //movement
-        //transform.position += new Vector3(movementInput.x, movementInput.y, 0f) * movementSpeed * Time.deltaTime;
-        movementInput.Normalize();
-        playerRigidbody.velocity = movementInput * movementSpeed;
+    private void AnimatingThePlayer()
+    {
+        //animation for idling/running
+        if (movementInput != Vector2.zero)
+        {
+            playerAnimator.SetBool("isRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("isRunning", false);
+        }
+    }
 
+    private void PointingGunAtMouse()
+    {
         //weapon rotation
         Vector3 mousePosition = Input.mousePosition;
         Vector3 screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
@@ -60,19 +72,12 @@ public class PlayerController : MonoBehaviour
             transform.localScale = Vector3.one;
             weaponsArm.localScale = Vector3.one;
         }
+    }
 
-        //animation for idling/running
-        if (movementInput != Vector2.zero)
-        {
-            playerAnimator.SetBool("isRunning", true);
-        }
-        else
-        {
-            playerAnimator.SetBool("isRunning", false);
-        }
-
+    private void PlayerShooting()
+    {
         //shooting
-        if(Input.GetMouseButtonDown(0) && !isWeaponAutomatic)
+        if (Input.GetMouseButtonDown(0) && !isWeaponAutomatic)
         {
             Instantiate(projectile, firePoint.position, firePoint.rotation);
         }
@@ -81,11 +86,22 @@ public class PlayerController : MonoBehaviour
         {
             shotCounter -= Time.deltaTime;
 
-            if(shotCounter <= 0)
+            if (shotCounter <= 0)
             {
                 Instantiate(projectile, firePoint.position, firePoint.rotation);
                 shotCounter = timeBetweenShots;
             }
         }
+    }
+
+    private void PlayerMoving()
+    {
+        // inputs
+        movementInput.x = Input.GetAxisRaw("Horizontal");
+        movementInput.y = Input.GetAxisRaw("Vertical");
+
+        //movement
+        movementInput.Normalize();
+        playerRigidbody.velocity = movementInput * movementSpeed;
     }
 }

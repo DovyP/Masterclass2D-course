@@ -238,7 +238,7 @@ MonoBehaviour:
   meleeAttacker: 0
   enemyProjectile: {fileID: 181991180843813089, guid: 21c0cf0c8e58ffc4bbd5726eb313814c, type: 3}
   firePosition: {fileID: 4545332692937536886}
-  shootingRange: 3.69
+  shootingRange: 3.42
   timeBetweenShots: 1
   deathSplatter: {fileID: 1751727933792532734, guid: a9715f99c6f2a2c40adf416ba4f26e12, type: 3}
   damageEffect: {fileID: 5656640676330442883, guid: a36e9b9458795be4bbf3ea8168f6fa7a, type: 3}

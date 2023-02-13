@@ -5,11 +5,20 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     [SerializeField] GameObject[] doorsToClose;
-    [SerializeField] bool CloseDoorOnPlayerEnter;
+    [SerializeField] bool CloseDoorOnPlayerEnter, openDoorsWhenEnemiesDie;
+
+    [SerializeField] List<Collider2D> enemies = new List<Collider2D>();
+
+    private Collider2D roomCollider;
+
+    private ContactFilter2D contactFilter2D;
 
     void Start()
     {
-        
+        roomCollider = GetComponent<Collider2D>();
+        contactFilter2D.SetLayerMask(LayerMask.GetMask("Enemy"));
+
+        roomCollider.OverlapCollider(contactFilter2D, enemies);
     }
 
     void Update()

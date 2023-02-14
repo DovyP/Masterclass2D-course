@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     private bool canDash;
 
     [SerializeField] float dashSpeed = 10f, dashLength = .25f, dashCooldown = 1f;
+    bool isDashing;
+
+    // Dash trail
+    [SerializeField] TrailRenderer trailRenderer;
 
     void Start()
     {
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
         currentMovementSpeed = movementSpeed;
         canDash = true;
+        isDashing = false;
     }
 
     void Update()
@@ -49,7 +54,8 @@ public class PlayerController : MonoBehaviour
         {
             currentMovementSpeed = dashSpeed;
             canDash = false;
-
+            isDashing = true;
+            trailRenderer.emitting = true;
             // counters
             StartCoroutine(DashCooldownCounter());
             StartCoroutine(DashLengthCounter());
@@ -68,6 +74,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashLength);
 
         currentMovementSpeed = movementSpeed;
+        trailRenderer.emitting = false;
+        isDashing = false;
     }
 
     private void AnimatingThePlayer()

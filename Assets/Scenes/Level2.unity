@@ -5643,10 +5643,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2544324188580253204, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2544324188580253206, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5694,6 +5690,10 @@ PrefabInstance:
     - target: {fileID: 2544324188580253209, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516250017358298222, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4318cdf4d957b5f43842f1c3df304df7, type: 3}

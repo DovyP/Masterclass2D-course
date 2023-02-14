@@ -22,11 +22,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float timeBetweenShots;
     private float shotCounter = 0f;
 
+    // Dashing
+    private float currentMovementSpeed;
+    private bool canDash;
+
+    [SerializeField] float dashSpeed = 10f, dashLength = .25f, dashCooldown = 1f;
+
     void Start()
     {
         mainCamera = Camera.main;
 
         playerAnimator = GetComponent<Animator>();
+
+        currentMovementSpeed = movementSpeed;
+        canDash = true;
     }
 
     void Update()
@@ -35,6 +44,30 @@ public class PlayerController : MonoBehaviour
         PointingGunAtMouse();
         AnimatingThePlayer();
         PlayerShooting();
+
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        {
+            currentMovementSpeed = dashSpeed;
+            canDash = false;
+
+            // counters
+            StartCoroutine(DashCooldownCounter());
+            StartCoroutine(DashLengthCounter());
+        }
+    }
+
+    private IEnumerator DashCooldownCounter()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+
+        canDash = true;
+    }
+
+    private IEnumerator DashLengthCounter()
+    {
+        yield return new WaitForSeconds(dashLength);
+
+        currentMovementSpeed = movementSpeed;
     }
 
     private void AnimatingThePlayer()
@@ -102,6 +135,6 @@ public class PlayerController : MonoBehaviour
 
         //movement
         movementInput.Normalize();
-        playerRigidbody.velocity = movementInput * movementSpeed;
+        playerRigidbody.velocity = movementInput * currentMovementSpeed;
     }
 }

@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     // Dash trail
     [SerializeField] TrailRenderer trailRenderer;
 
+    // Test stuff
+
+    List<GameObject> trailParts = new List<GameObject>();
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -55,10 +59,11 @@ public class PlayerController : MonoBehaviour
             currentMovementSpeed = dashSpeed;
             canDash = false;
             isDashing = true;
-            trailRenderer.emitting = true;
+            //trailRenderer.emitting = true;
             // counters
             StartCoroutine(DashCooldownCounter());
             StartCoroutine(DashLengthCounter());
+            StartCoroutine(GhostingEffect());
         }
     }
 
@@ -144,5 +149,39 @@ public class PlayerController : MonoBehaviour
         //movement
         movementInput.Normalize();
         playerRigidbody.velocity = movementInput * currentMovementSpeed;
+    }
+
+
+    // test stuff
+    void SpawnTrailPart()
+    {
+        GameObject trailPart = new GameObject();
+        SpriteRenderer trailPartRenderer = trailPart.AddComponent<SpriteRenderer>();
+        trailPartRenderer.sprite = GetComponentInChildren<SpriteRenderer>().sprite;
+        trailPartRenderer.sortingLayerName = "Player";
+        trailPart.transform.position = transform.position;
+        trailPart.transform.localScale = transform.localScale; // We forgot about this line!!!
+        trailParts.Add(trailPart);
+
+        StartCoroutine(FadeTrailPart(trailPartRenderer));
+        Destroy(trailPart, 0.5f); // replace 0.5f with needed lifeTime
+    }
+
+    IEnumerator FadeTrailPart(SpriteRenderer trailPartRenderer)
+    {
+        Color color = trailPartRenderer.color;
+        color = Color.black;
+        color.a -= 0.6f; // replace 0.5f with needed alpha decrement
+        trailPartRenderer.color = color;
+
+        yield return new WaitForEndOfFrame();
+    }
+
+    IEnumerator GhostingEffect()
+    {
+        //SpawnTrailPart();
+        InvokeRepeating("SpawnTrailPart", 0, 0.05f); // replace 0.2f with needed repeatRate
+        yield return new WaitForSeconds(dashLength);
+        CancelInvoke("SpawnTrailPart");
     }
 }
